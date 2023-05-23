@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FlCash.Data.Offer>
+
+@{
+    ViewData["Title"] = "Offers";
+}
+
+<h2>News</h2>
+<p>
+    @Html.ActionLink("Create New Offer", "Create", new { controller = "Offers" },
+         new { @class = "btn btn-primary" })
+</p>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Offers</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Image
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img width="200" height="150" src="@item.Image" alt="@Html.DisplayNameFor(model => model.Image)" />
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>

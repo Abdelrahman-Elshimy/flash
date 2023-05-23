@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FlCash.Data.Notification>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (ViewBag.successNotifications != null)
+{
+    <h3 class="alert alert-success mt-2">@ViewBag.successNotifications</h3>
+
+}
+@if (ViewBag.errorNotifications != null)
+{
+    <h3 class="alert alert-danger mt-2">@ViewBag.errorNotifications</h3>
+}
+    <h1>Notifications</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New Notification</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Body)
+                </th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Body)
+                    </td>
+
+                    <td>
+                        <a class="btn btn-primary" asp-area="Admin" asp-action="SendNotification" asp-route-id="@item.Id">Send Notification</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

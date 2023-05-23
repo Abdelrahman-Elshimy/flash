@@ -1,0 +1,79 @@
+﻿@model IEnumerable<FlCash.Data.Badge>
+
+@{
+    ViewData["Title"] = "Badges";
+}
+
+<h2>Badges</h2>
+<p>
+    @Html.ActionLink("Create New Badges", "Create", new { controller = "Badges" },
+         new { @class = "btn btn-primary" })
+</p>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Badges</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                   
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Logo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.InitialLogo)
+                                    </th>
+                                    <th>Operations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        <img src="@item.Logo" width="50" height="50" alt="Alternate Text" />
+                                    </td>
+                                        <td>
+                                            <img src="@item.InitialLogo" width="50" height="50" alt="Alternate Text" />
+                                        </td>
+                                    <td>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
